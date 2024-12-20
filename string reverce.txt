@@ -1,0 +1,43 @@
+﻿; This program reverces the string
+; Input: a string of 0's and 1's
+
+; State 0: remember the leftmost symbol
+; and moving with it toright
+0 0 _ r a0
+0 1 _ r a1
+0 _ _ * halt ; Empty input
+
+; State a0, a1: find the right endspace 
+; Writing the leftmost symbol into it
+a0 _ 0 l 2
+a0 * * r a0
+
+a1 _ 1 l 2
+a1 * * r a1
+
+; State 2: remember the rightmost non-reverced symbol
+; Remember it, clear it's place and moving toleft
+2 _ _ l c
+2 0 _ l b0
+2 1 _ l b1
+
+; State b0, b1: find the left endspace 
+; Writing the remembered symbol into it
+b0 _ 0 r c
+b0 * * l b0
+
+b1 _ 1 r c
+b1 * * l b1
+
+; State c: remember the leftmost non-reverced symbol
+; Remember it, clear it's place and moving toright
+; if it's a space, all string is reverced
+; so, move the right half to 1 position left
+c 0 _ r a0
+c 1 _ r a1
+c _ _ r d
+
+; State d: move the right half of string to 1 position left
+d _ * * halt
+d 1 _ l b1
+d 0 _ l b0

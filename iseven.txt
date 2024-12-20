@@ -1,0 +1,17 @@
+﻿; This program writes, if the number of symbols
+; even or odd
+
+0 _ _ r o
+0 * * r 1
+
+1 _ _ r e
+1 * * r 0
+
+o * o r o1
+o1 * d r o2
+o2 * d r halt
+
+e * e r e1
+e1 * v r e2
+e2 * e r e3
+e3 * n r halt
