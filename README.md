@@ -1,5 +1,6 @@
 # Otus-CS-2024-12-HW-1
 Homework 1
+
 Problems:
 - to find, is the number of symbols in the string even or odd
 - to increment a decimal number
